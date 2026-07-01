@@ -1,0 +1,18 @@
+# 파이썬 가상환경
+venv/
+.venv/
+
+# 파이썬 임시 파일
+__pycache__/
+*.pyc
+*.pyo
+
+# VS Code 개인 설정
+.vscode/
+
+# 운영체제 임시 파일
+.DS_Store
+Thumbs.db
+
+# Streamlit 비밀정보
+.streamlit/secrets.toml
