@@ -5,14 +5,25 @@ import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
 import pandas as pd
 
-
 def set_korean_font():
     """
-    matplotlib에서 한글이 깨지지 않도록 폰트를 설정하는 함수.
-    Windows 환경에서는 'Malgun Gothic'(맑은 고딕)을 사용합니다.
+    운영체제에 따라 한글 폰트를 자동으로 설정하는 함수.
     """
-    plt.rcParams["font.family"]     = "Malgun Gothic"  # 맑은 고딕
-    plt.rcParams["axes.unicode_minus"] = False          # 마이너스 기호 깨짐 방지
+    import platform
+
+    system = platform.system()
+
+    if system == "Windows":
+        font_name = "Malgun Gothic"    # 윈도우
+    elif system == "Darwin":
+        font_name = "AppleGothic"      # 맥
+    else:
+        # Linux (Streamlit Cloud)
+        # 나눔고딕 설치 필요 → packages.txt로 해결
+        font_name = "NanumGothic"
+
+    plt.rcParams["font.family"]        = font_name
+    plt.rcParams["axes.unicode_minus"] = False
 
 
 def draw_fuel_bar_chart(df: pd.DataFrame) -> plt.Figure:
